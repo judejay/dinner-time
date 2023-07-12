@@ -1,6 +1,6 @@
 import React from 'react';
 import { CATEGORIES } from '../data/dummy-data';
-import { FlatList } from 'react-native';
+import { FlatList, GestureResponderEvent } from 'react-native';
 import CategoryGridTile from '../components/CategoryGridTile';
 import Category from '../models/category';
 
@@ -10,13 +10,24 @@ type ItemData = {
   item: Category;
 };
 
-const renderCategoryItem = (itemData: ItemData) =>(
-    <CategoryGridTile title={itemData.item.title} color={itemData.item.color} />
+
+
+
+export default function CategoriesScreen( {navigation}: {navigation: any} ) {
+    const renderCategoryItem = (itemData: ItemData) =>{
+    const pressHandler= () => {navigation.navigate("MealsOverView");
+  }
+
+    return (
+    <CategoryGridTile onPress={pressHandler} title={itemData.item.title} color={itemData.item.color} 
+    />
 )
 
+    }
 
 
-export default function CategoriesScreen() {
+
+  
   return (
     <FlatList 
     data={CATEGORIES}

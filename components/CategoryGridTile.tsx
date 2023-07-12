@@ -1,15 +1,19 @@
-import { Pressable, View, Text, StyleSheet, Platform } from 'react-native'
+import {GestureResponderEvent , Pressable, View, Text, StyleSheet, Platform } from 'react-native'
 
 interface CategoryGridTileProps {
     title: string,
     color: string,
+    onPress: (event: GestureResponderEvent) => void
 }
 
 
-const CategoryGridTile: React.FC<CategoryGridTileProps> = ({title, color}) => {
+const CategoryGridTile: React.FC<CategoryGridTileProps> = ({title, color, onPress}) => {
   return (
     <View style={[styles.gridItem, {backgroundColor: color}]}>
-        <Pressable android_ripple={{color: '#ccc'}} style={(pressed) => [styles.button,pressed ? styles.button: null ]}>
+        <Pressable android_ripple={{color: '#ccc'}} style={(pressed) => [styles.button,pressed ? styles.button: null ]}
+              onPress={onPress}
+
+        >
             <View style={styles.innerContainer}>
                 <Text style={styles.title}>
                     {title}
