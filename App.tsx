@@ -4,8 +4,7 @@ import CategoriesScreen from './screens/CategoriesScreen';
 import { NavigationContainer } from '@react-navigation/native'; 
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import MealsOverView from './screens/MealsOverView';
-type RootStackParamList ={
-  //name: string;
+export type RootStackParamList ={
   CategoriesScreen: undefined;
   MealsOverView: { categoryId: string}; 
 }
@@ -15,10 +14,17 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 export default function App() {
   return (
     <>
-    <StatusBar style='dark' />
+    <StatusBar style='light' />
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="CategoriesScreen" component={CategoriesScreen}/>
+      <Stack.Navigator screenOptions={{headerStyle: { backgroundColor: '#4f1515'},
+          headerTintColor: 'white',
+          contentStyle: { backgroundColor: '#401313'}}}>
+        <Stack.Screen name="CategoriesScreen" component={CategoriesScreen}
+        options={({
+          title: "All Categories",
+          
+        })}
+        />
         <Stack.Screen name="MealsOverView" component={MealsOverView} 
         options={({route, navigation}) => {
           const catId = route.params?.categoryId;

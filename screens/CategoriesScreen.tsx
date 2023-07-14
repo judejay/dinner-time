@@ -5,7 +5,7 @@ import CategoryGridTile from '../components/CategoryGridTile';
 import Category from '../models/category';
 
 
-type ItemData = {
+export type ItemData = {
   index: number;
   item: Category;
 };
@@ -15,7 +15,9 @@ type ItemData = {
 
 export default function CategoriesScreen( {navigation}: {navigation: any} ) {
     const renderCategoryItem = (itemData: ItemData) =>{
-    const pressHandler= () => {navigation.navigate("MealsOverView");
+    const pressHandler= () => {navigation.navigate("MealsOverView", {
+      categoryId: itemData.item.id,
+    });
   }
 
     return (
