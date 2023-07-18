@@ -4,6 +4,7 @@ import { RouteProp } from '@react-navigation/native';
 import { RootStackParamList } from '../App';
 import { ItemData } from './CategoriesScreen';
 import MealItem from '../components/MealItem';
+import Meal from '../models/meal';
 
 type MealsOverViewRouteProp = RouteProp<RootStackParamList, 'MealsOverView'>;
 
@@ -16,8 +17,16 @@ const MealsOverView: React.FC<Props> = (props: Props) => {
     return mealItem.categoryIds.indexOf(catId) >= 0;
   });
 const renderMealItem = (itemData: any) => {
+  const item = itemData.item;
+  const mealItemProps = {
+    title: item.title,
+    imageUrl: item.imageUrl,
+    affordability: item.affordability,
+    complexity: item.complexity,
+    duration: item.duration,
+  }
   return(
-    <MealItem title={itemData.item.title} />
+    <MealItem {...mealItemProps}  />
   ) 
 }
 
