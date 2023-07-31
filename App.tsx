@@ -11,7 +11,7 @@ export type RootStackParamList ={
   [x: string]: any;
   CategoriesScreen: undefined;
   MealsOverView: { categoryId: string, otherParams: string}; 
-  MealDetailScreen: { categoryId: number, otherParams: string};
+  MealDetailScreen: { mealId: number, otherParams: string};
 }
 
 export const Stack = createNativeStackNavigator<RootStackParamList>();
