@@ -7,7 +7,7 @@ import { ItemData } from './CategoriesScreen';
 import MealItem from '../components/MealItem';
 import Meal from '../models/meal';
 
-type MealsOverViewRouteProp = NativeStackScreenProps<RootStackParamList, 'MealsOverView'>;
+export type MealsOverViewRouteProp = NativeStackScreenProps<RootStackParamList, 'MealsOverView'>;
 
 
 const MealsOverView: React.FC<MealsOverViewRouteProp> = ({ route, navigation}) => {
@@ -29,6 +29,7 @@ const MealsOverView: React.FC<MealsOverViewRouteProp> = ({ route, navigation}) =
 const renderMealItem = (itemData: any) => {
   const item = itemData.item;
   const mealItemProps = {
+    id: item.id,
     title: item.title,
     imageUrl: item.imageUrl,
     affordability: item.affordability,
