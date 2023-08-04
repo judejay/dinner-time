@@ -34,7 +34,7 @@ const MealItem: React.FC<MealItemProps> = ({id, title, imageUrl, duration, compl
                    <Image source={{uri: imageUrl}} style={styles.image} />
                    <Text style={styles.title}>{title}</Text> 
                 </View>
-                <MealDetails duration={duration} complexity={complexity} affordability={affordability} id={''} />
+                <MealDetails duration={duration} complexity={complexity} affordability={affordability} id={''} style={undefined} textStyle={undefined} />
          </View>
         </Pressable>
     </View>
