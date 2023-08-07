@@ -6,6 +6,7 @@ import MealDetails from '../components/MealDetails';
 import Subtitle from '../components/MealDetail/Subtitle';
 import List from '../components/MealDetail/List';
 import { useLayoutEffect } from 'react';
+import IconButton from '../components/IconButton';
 
 type MealDetailScreenProps = NativeStackScreenProps<RootStackParamList, 'MealDetailScreen'>;
 
@@ -20,7 +21,7 @@ const MealDetailScreen: React.FC<MealDetailScreenProps> = ({ route, navigation }
     useLayoutEffect(() =>{
         navigation.setOptions({
             headerRight: ()=> {
-                return<Button onPress={headerButtonPressHandler}  title='Tap ME'/>
+                return<IconButton icon='star' color='white' onPress={headerButtonPressHandler}  />
             }
         });
     }, [navigation, headerButtonPressHandler]);
