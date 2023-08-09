@@ -10,6 +10,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import MealsOverView from './screens/MealsOverView';
 import MealDetailScreen from './screens/MealDetailScreen';
 import FavoritesScreen from './screens/FavoritesScreen';
+import FavoritesContextProvider from './store/context/favorites-context';
 
 
 export type RootStackParamList ={
@@ -62,6 +63,7 @@ export default function App() {
   return (
     <>
     <StatusBar style='light' />
+    <FavoritesContextProvider>
     <NavigationContainer>
       <Stack.Navigator 
         screenOptions={{headerStyle: { backgroundColor: '#4f1515'},
@@ -78,9 +80,14 @@ export default function App() {
             }}
           />
         <Stack.Screen name="MealsOverView" component={MealsOverView} />
-        <Stack.Screen name="MealDetailScreen" component={MealDetailScreen} />
+        <Stack.Screen name="MealDetailScreen" component={MealDetailScreen} 
+         options={{
+          title: 'Meal Details',
+        }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
+    </FavoritesContextProvider>
     </>
   );
 }
