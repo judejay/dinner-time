@@ -1,7 +1,7 @@
 import { View, Text, Pressable, Image, StyleSheet, Platform } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { RootStackParamList } from '../App';
-import MealDetails from './MealDetails';
+import { RootStackParamList } from '../../App';
+import MealDetails from '../MealDetails';
 
 type MealItemProps ={
     title: string;
