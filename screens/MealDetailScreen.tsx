@@ -1,4 +1,3 @@
-import { useContext } from 'react';
 import { ScrollView, Text, View, Image, StyleSheet, Button } from 'react-native';
 import { RootStackParamList } from '../App';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
@@ -8,7 +7,6 @@ import Subtitle from '../components/MealDetail/Subtitle';
 import List from '../components/MealDetail/List';
 import { useLayoutEffect } from 'react';
 import IconButton from '../components/IconButton';
-import { FavoritesContext } from '../store/context/favorites-context';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../store/redux/store';
 import { addFavorite, removeFavorite } from '../store/redux/favorites';
@@ -18,7 +16,6 @@ type MealDetailScreenProps = NativeStackScreenProps<RootStackParamList, 'MealDet
 
 const MealDetailScreen: React.FC<MealDetailScreenProps> = ({ route, navigation }) => {
     
-    //const favoritesCtx = useContext(FavoritesContext)
     
     const favoritesMealsIds = useSelector((state: RootState) => state.favoriteMeals.ids);
     const dispatch =useDispatch();
@@ -26,7 +23,6 @@ const MealDetailScreen: React.FC<MealDetailScreenProps> = ({ route, navigation }
     const mealId = route.params.mealId.toString();
     const selectedMeal = MEALS.find((meal) => meal.id === mealId);
    
-    //const mealIsFavorite = favoritesCtx?.ids?.includes(mealId);
     const mealIsFavorite = favoritesMealsIds.includes(mealId)
     function changeFavoritesStatusHandler() {
         if (mealIsFavorite) {
