@@ -19,7 +19,6 @@ const FavoritesScreen: any=() => {
     }
 
     return (
-
         <MealsList items={favoriteMeals}/>
     )
 }
