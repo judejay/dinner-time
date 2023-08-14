@@ -9,22 +9,30 @@ import List from '../components/MealDetail/List';
 import { useLayoutEffect } from 'react';
 import IconButton from '../components/IconButton';
 import { FavoritesContext } from '../store/context/favorites-context';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../store/redux/store';
+import { addFavorite, removeFavorite } from '../store/redux/favorites';
+
+
 type MealDetailScreenProps = NativeStackScreenProps<RootStackParamList, 'MealDetailScreen'>;
 
 const MealDetailScreen: React.FC<MealDetailScreenProps> = ({ route, navigation }) => {
     
-    const favoritesCtx = useContext(FavoritesContext)
+    //const favoritesCtx = useContext(FavoritesContext)
+    
+    const favoritesMealsIds = useSelector((state: RootState) => state.favoriteMeals.ids);
+    const dispatch =useDispatch();
     
     const mealId = route.params.mealId.toString();
     const selectedMeal = MEALS.find((meal) => meal.id === mealId);
    
-    const mealIsFavorite = favoritesCtx?.ids?.includes(mealId);
-
+    //const mealIsFavorite = favoritesCtx?.ids?.includes(mealId);
+    const mealIsFavorite = favoritesMealsIds.includes(mealId)
     function changeFavoritesStatusHandler() {
         if (mealIsFavorite) {
-            favoritesCtx?.removeFavorite(mealId);
+            dispatch(removeFavorite(mealId));
         } else {
-            favoritesCtx?.addFavorite(mealId);
+            dispatch(addFavorite(mealId));
         }
     }
 
